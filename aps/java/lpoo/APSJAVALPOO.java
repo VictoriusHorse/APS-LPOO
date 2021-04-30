@@ -37,25 +37,29 @@ class Main {
     }
 
     public static void createTest(Question [] questions) {
-        int score = questions.length - 1;
+        int score = 0;
         Scanner keyboardInput = new Scanner(System.in);
 
-        for(int i = 1; i < questions.length; i++) {
+        for (int i = 1; i < questions.length; i++) {
             System.out.println(questions[i].prompt);
-            if(i != 1) {
+            
+            if (i != 1) {
                 System.out.println("0 - Voltar");
             }
 
             String answer = keyboardInput.nextLine();
 
-            if(i != 1 && answer.equals("0")) {
+            if (i != 1 && answer.equals("0")) {
                 i -= 2;
             }
 
-            if(answer.equals(questions[i].answer)) {
-                score++;
-            }
+            questions[i].hit = answer.equals(questions[i].answer) ? true : false;
         }
+
+        for (Question q : questions) {
+            score += q.hit ? 1 : 0;
+        }
+
         System.out.println("Sua pontuação foi " + score + "/" + (questions.length - 1));
     }
 }
