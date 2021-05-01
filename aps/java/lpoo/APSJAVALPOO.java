@@ -1,21 +1,31 @@
 package aps.java.lpoo;
+import java.sql.*;
 
-import java.util.Scanner ;
-
+import java.util.Scanner;
 
 class Energia {
-    
-   
+
 }
 
-
 class energianuclear extends Energia {
-    
-    
+
 }
 
 class Main {
     public static void main (String [] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/quiz", "root", "");
+            Statement stmt=con.createStatement();
+            ResultSet rs=stmt.executeQuery("SELECT Name from country where Population<10000;");
+            while(rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+            con.close();
+        }
+        catch(Exception e) {
+            System.err.println(e);
+        }
 
         String q1 = "Digite o tema desejado: \n" 
             + "1 - Fontes Renovaveis\n2 - Lixo \n3 - Impactos Humanos \n4 - Aquecimento Global \n5 - Queimadas\n";
@@ -36,13 +46,13 @@ class Main {
         createTest(questions);
     }
 
-    public static void createTest(Question [] questions) {
+    public static void createTest(Question[] questions) {
         int score = 0;
         Scanner keyboardInput = new Scanner(System.in);
 
         for (int i = 1; i < questions.length; i++) {
             System.out.println(questions[i].prompt);
-            
+
             if (i != 1) {
                 System.out.println("0 - Voltar");
             }
@@ -63,4 +73,3 @@ class Main {
         System.out.println("Sua pontuação foi " + score + "/" + (questions.length - 1));
     }
 }
-
