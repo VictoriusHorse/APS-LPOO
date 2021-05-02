@@ -29,14 +29,14 @@ class Main {
 
         System.out.println("Deseja usar um banco de dados? S/N \n");
 
-        String use_database = keyboardInput.nextLine();
+        String use_database = keyboardInput.nextLine().trim().toUpperCase();
 
         System.out.println("Digite o tema desejado: \n"
                 + "1 - Energia Solar\n2 - Energia Hidráulica \n3 - Energia Eólica \n4 - Outros \n");
 
-        String select = keyboardInput.nextLine().toUpperCase().trim();
+        String select = keyboardInput.nextLine();
 
-        if (use_database == "S") {
+        if (use_database.equals("S")) {
             try {
                 Class.forName(driver);
                 Connection con = DriverManager.getConnection(url, username, password);
@@ -90,7 +90,7 @@ class Main {
                 System.err.println(e + "-3");
             }
         }
-        else if (use_database == "N") {
+        else if (use_database.equals("N")) {
             String q1 = "Pergunta: \n" 
             + "1 - Fontes Renovaveis\n2 - Lixo \n3 - Impactos Humanos \n4 - Aquecimento Global \n5 - Queimadas\n";
     
@@ -103,9 +103,6 @@ class Main {
             questions.add(new Question(q1, "1"));
             questions.add(new Question(q2, "1"));
             questions.add(new Question(q3, "1"));
-        }
-        else {
-            System.err.println("Write a valid answer.");
         }
 
         createTest(questions.toArray(new Question[questions.size()]));
