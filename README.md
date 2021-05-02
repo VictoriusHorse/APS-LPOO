@@ -3,19 +3,24 @@
 ## Create a Database
 
 ```
-CREATE DATABASE quiz;
+DROP TABLE IF EXISTS quiz;
 CREATE TABLE questions (
   ID int NOT NULL UNIQUE AUTO_INCREMENT,
   alternativeID int NOT NULL UNIQUE,
-  theme varchar(20),
+  themeID int,
   question varchar(30) NOT NULL,
   answer tinyint NOT NULL,
   PRIMARY KEY (ID),
   FOREIGN KEY (alternativeID) REFERENCES alternatives(ID),
+  FOREIGN KEY (themeID) REFERENCES themes(ID),
 );
 CREATE TABLE alternatives (
   ID int NOT NULL UNIQUE AUTO_INCREMENT,
   alternative varchar(30),
+);
+CREATE TABLE themes (
+  ID int NOT NULL UNIQUE AUTO_INCREMENT,
+  theme varchar(30),
 );
 CREATE TABLE answers (
   ID int NOT NULL UNIQUE AUTO_INCREMENT,
