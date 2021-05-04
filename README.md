@@ -1,7 +1,16 @@
 # APS Linguagem de Programação Orientada a Objetos Java
 
-## Create a Database
+## Crie um Banco de dados
 
+No terminal do mysql utilize o comando mais o caminho do arquivo Quiz.sql:
+```
+source "[path]"
+```
+No terminal utilize o comando mais o caminho do arquivo Quiz.sql:
+```
+mysql -u root -p quiz < "[path]"
+```
+## Arquivo Quiz.sql
 ```
 DROP TABLE IF EXISTS quiz;
 CREATE TABLE questions (

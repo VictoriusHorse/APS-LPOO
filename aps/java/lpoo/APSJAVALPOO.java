@@ -3,20 +3,12 @@ package aps.java.lpoo;
 import java.sql.*;
 
 import java.util.Scanner;
-import java.util.ArrayList;  
-
-class Energia {
-
-}
-
-class energianuclear extends Energia {
-
-}
+import java.util.ArrayList;
 
 class Main {
     public static void main(String[] args) {
         String username = "root";
-        String password = "123456";
+        String password = "password";
         String serverName = "localhost:3306";
         String database = "quiz";
         String driver = "com.mysql.cj.jdbc.Driver";
@@ -43,43 +35,45 @@ class Main {
                 Statement stmt = con.createStatement();
     
                 Boolean questions_conn = false;
-                int alternative_ID = 0;
-                int answer = 0;
-                String displayQuestion = null;
+                ArrayList<Integer> alternative_ID_array = new ArrayList<Integer>();
+                ArrayList<Integer> answers = new ArrayList<Integer>();
+                ArrayList<String> displayQuestions = new ArrayList<String>();
     
                 try {
                     ResultSet question = stmt.executeQuery("SELECT * from questions where theme_ID=" + select + ";");
     
                     while (question.next()) {
-                        alternative_ID = question.getInt("alternative_ID");
-                        displayQuestion = question.getString("question");
-                        answer = question.getInt("answer");
+                        alternative_ID_array.add(question.getInt("alternative_ID"));
+                        displayQuestions.add(question.getString("question"));
+                        answers.add(question.getInt("answer"));
                     }
     
                     question.close();
                     questions_conn = true;
                 } catch (Exception e) {
-                    System.err.println(e + "-1");
+                    System.err.println(e);
                 }
     
                 if (questions_conn) {                
                     try {
-                        ResultSet alternatives = stmt.executeQuery(
-                            "SELECT * from alternatives where id=" + alternative_ID + ";");
-        
-                        while (alternatives.next()) {
-                            displayQuestion = displayQuestion
-                                    + "\n1 - " + alternatives.getString("alternative1")
-                                    + "\n2 - " + alternatives.getString("alternative2")
-                                    + "\n3 - " + alternatives.getString("alternative3")
-                                    + "\n4 - " + alternatives.getString("alternative4")
-                                    + "\n5 - " + alternatives.getString("alternative5") + "\n";
-                        };
-        
-                        questions.add(new Question(displayQuestion, Integer.toString(answer)));
-                        alternatives.close();
+                        for (int i = 0; i < answers.size(); i++) {
+                            ResultSet alternatives = stmt.executeQuery(
+                                "SELECT * from alternatives where id=" + alternative_ID_array.get(i) + ";");
+            
+                            while (alternatives.next()) {
+                                displayQuestions.set(i, displayQuestions.get(i)
+                                        + "\n1 - " + alternatives.getString("alternative1")
+                                        + "\n2 - " + alternatives.getString("alternative2")
+                                        + "\n3 - " + alternatives.getString("alternative3")
+                                        + "\n4 - " + alternatives.getString("alternative4")
+                                        + "\n5 - " + alternatives.getString("alternative5") + "\n");
+                            };
+            
+                            questions.add(new Question(displayQuestions.get(i), Integer.toString(answers.get(i))));
+                            alternatives.close();
+                        }
                     } catch (Exception e) {
-                        System.err.println(e + "-2");
+                        System.err.println(e);
                     }
                 }
     
@@ -87,7 +81,7 @@ class Main {
                 stmt.close();
                 con.close();
             } catch (Exception e) {
-                System.err.println(e + "-3");
+                System.err.println(e);
             }
         }
         else if (use_database.equals("N")) {

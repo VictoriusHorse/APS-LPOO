@@ -20,7 +20,7 @@ CREATE TABLE questions (
   ID int NOT NULL UNIQUE AUTO_INCREMENT,
   alternative_ID int NOT NULL UNIQUE,
   theme_ID int DEFAULT '0',
-  question varchar(60) NOT NULL,
+  question varchar(80) NOT NULL,
   answer int NOT NULL,
   PRIMARY KEY (ID),
   FOREIGN KEY (alternative_ID) REFERENCES alternatives(ID),
@@ -36,7 +36,23 @@ CREATE TABLE questions (
 -- );
 INSERT INTO themes VALUES
   (DEFAULT, 'Energia Solar');
+INSERT INTO themes VALUES
+  (DEFAULT, 'Energia Hidraulica');
+INSERT INTO themes VALUES
+  (DEFAULT, 'Energia Eolica');
 INSERT INTO alternatives VALUES
-  (DEFAULT, 'Matutino e Vespertino', 'Madrugada e Noite', 'Madrugada e Vespertino', 'Noite e Vespertino', 'Dia e Madrugada');
+  (DEFAULT, 'Minas Gerais', 'Sao Paulo', 'Rio de Janeiro', 'Santa Catarina', 'Amazonas');
 INSERT INTO questions VALUES
-  (DEFAULT, '1', '1', 'Em quais turnos do dia um painel solar funciona?', '1');
+  (DEFAULT, '1', '1', 'Qual pais do brasil produz mais energia solar?', '1');
+INSERT INTO alternatives VALUES
+  (DEFAULT, '1950', '1830', '1954', '1902', '1754');
+INSERT INTO questions VALUES
+  (DEFAULT, '2', '1', 'Em que ano surgiu a energia solar?', '3');
+INSERT INTO alternatives VALUES
+  (DEFAULT, 'E.U.A', 'Brasil', 'Russia', 'Equador', 'China');
+INSERT INTO questions VALUES
+  (DEFAULT, '3', '1', 'Qual e o pais que mais produz energia solar no Mundo?', '5');
+INSERT INTO alternatives VALUES
+  (DEFAULT, 'Eolica', 'Hidrica/hidraulica', 'Geotermica', 'Oceanica', 'Todas as alternativas');
+INSERT INTO questions VALUES
+  (DEFAULT, '4', '2', 'Quais das alternativas a seguir sao uma fonte de energia renovavel?', '5');
