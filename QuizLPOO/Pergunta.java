@@ -1,3 +1,5 @@
+package QuizLPOO;
+
 public class Pergunta {
     
     public String pergunta="";
