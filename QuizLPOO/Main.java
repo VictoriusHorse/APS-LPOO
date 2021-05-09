@@ -22,8 +22,8 @@ public class Main {
 
         int opc = -1;
         while (opc != 0) {           
-            System.out.println("Digite o tema desejado:\n1 - Energia Solar ");
-            System.out.println("2 - Energia Hidrelétrica \n3 - Energia Eólica \n4 - Outros \n0 - Sair");
+            System.out.println("Digite o tema desejado:\n1 - Energia Eolica ");
+            System.out.println("2 - Energia Hidrelétrica \n3 - Energia Solar \n4 - Outros \n0 - Sair");
 
             opc = scanner.nextInt();
 
