@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         // Database Configuration
         String username = "root";
-        String password = "creepy_var11010";
+        String password = "password";
         String serverName = "localhost:3306";
         String database = "quiz";
         String driver = "com.mysql.cj.jdbc.Driver";
