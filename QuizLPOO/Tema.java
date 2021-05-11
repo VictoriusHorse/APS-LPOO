@@ -123,7 +123,7 @@ class Hidreletrica extends Tema {
     p1.setCerta(5);
     int resposta = scanner.nextInt();
     if (resposta == p1.getCerta()) {
-        System.out.println("Correto! Todas as alternativas são fontes renováveis.");
+        System.out.println("Correto! Pois essa fonte de energia não gera gases que contribuem para o efeito estufa.");
         correct++;
     } else {
         System.out.println("Errado");
@@ -139,7 +139,7 @@ class Hidreletrica extends Tema {
     p2.setCerta(4);
     int resposta2 = scanner.nextInt();
     if (resposta2 == p2.getCerta()) {
-        System.out.println("Certa");
+        System.out.println("Correto! A infraestrutura de uma usina hidroelétrica usa o desnível da agua (altura), vazão do rio (m³/s), aceleração da gravidade (9,81m/s²) para calcular o potencial em KW e assim saber a quantidade de energia fornecida.");
         correct++;
     } else {
         System.out.println("Errado");
@@ -155,7 +155,7 @@ class Hidreletrica extends Tema {
     p3.setCerta(4);
     int resposta3 = scanner.nextInt();
     if (resposta3 == p3.getCerta()) {
-        System.out.println("Correto!");
+        System.out.println("Correto! Com a construção da usina é possível controlar enchentes e irrigação, ajudando a diminuir desastres naturais em regiões proximas do rio.");
         correct++;
     } else {
         System.out.println("Errado");
@@ -171,7 +171,7 @@ class Hidreletrica extends Tema {
     p4.setCerta(5);
     int resposta4 = scanner.nextInt();
     if (resposta4 == p4.getCerta()) {
-        System.out.println("Correto!");
+        System.out.println("Correto! Construida em 2012, ela tem  capacidade de 22.500 MW, fornecendo enrgia para nove províncias e duas cidades, incluindo Xangai.");
         correct++;
     } else {
         System.out.println("Errado");
@@ -187,7 +187,7 @@ class Hidreletrica extends Tema {
     p5.setCerta(1);
     int resposta5 = scanner.nextInt();
     if (resposta5 == p5.getCerta()) {
-        System.out.println("Correto!");
+        System.out.println("Correto! Concentra cerca de 70% de toda produção de energia hidroelétrica no Brasil.");
         correct++;
     } else {
         System.out.println("Errado");
